@@ -111,6 +111,7 @@ function to($url){
 
 $Mem=new DB("member");
 $Admin=new DB('admin');
+$Bot=new DB('bottom');
 
 
 // $admin['acc']='admin';
