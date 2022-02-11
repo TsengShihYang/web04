@@ -1,5 +1,5 @@
 <h1>第一次購物</h1>
-<a href="?do=reg"> <img src="./icon/0413.jpg" alt=""></a>
+<a href="?do=reg"><img src="icon/0413.jpg" alt=""></a>
 <h1>會員登入</h1>
 
 <table class="all">
@@ -13,9 +13,37 @@
     </tr>
     <tr>
         <td class="tt ct">驗證碼</td>
-        <td class="pp"><input type="text" name="ans" id="ans"></td>
+        <td class="pp">
+            <?php
+                $a=rand(10,99);
+                $b=rand(10,99);
+                $_SESSION['ans']=$a+$b;
+                echo $a . " + " . $b . " = ";
+            ?>
+            <input type="text" name="ans" id="ans">
+        </td>
     </tr>
 </table>
 <div class="ct"><button onclick="login()">確認</button></div>
-</div>
+
+<script>
+function login(){
+    $.post("api/chk_ans.php",{ans:$("#ans").val()},(chk)=>{
+        if(parseInt(chk)){
+            $.post("api/chk_pw.php",
+                   {table:'member',acc:$("#acc").val(),pw:$("#pw").val()},
+                   (res)=>{
+                        if(parseInt(res)){
+                            location.href="index.php";
+                        }else{
+                            alert("帳號或密碼錯誤")
+                        }
+                    })
+        }else{
+                alert("sorry，答錯了，重學數學吧你！")
+            }
+        
+    })
+}    
+</script>
 
