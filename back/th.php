@@ -63,7 +63,7 @@
         <td><?=$g['stock'];?></td>
         <td><?=($g['sh']==1)?"販售中":"已下架";?></td>
         <td>
-            <button>修改</button>
+            <button onclick="location.href='?do=edit_goods&id=<?=$g['id'];?>'">修改</button>
             <button onclick="del('goods',<?=$g['id'];?>)">刪除</button>
             <button onclick="show(<?=$g['id'];?>,1)">上架</button>
             <button onclick="show(<?=$g['id'];?>,0)">下架</button>
