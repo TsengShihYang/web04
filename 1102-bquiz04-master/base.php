@@ -68,7 +68,7 @@ class DB{
             $sql .= " VALUES('".join("','",$array)."')";
 
         }
-
+        echo $sql;
         return $this->pdo->exec($sql);
 
     }
@@ -131,7 +131,9 @@ function dd($array){
 $Mem=new DB("member");
 $Admin=new DB('admin');
 $Bot=new DB('bottom');
-
+$Ord=new DB('ord');
+$Type=new DB('type');
+$Goods=new DB('goods');
 
 /* $admin['acc']='admin';
 $admin['pw']='1234';
